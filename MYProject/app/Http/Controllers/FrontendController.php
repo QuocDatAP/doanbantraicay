@@ -20,7 +20,9 @@ class FrontendController extends Controller
 
     public function single()
     {
-        return view('Frontend.pages.single');
+        $data = product::get();
+        //return $data;
+        return view('Frontend.pages.single',compact('data'));
     }
     public function product(){
         
@@ -28,5 +30,5 @@ class FrontendController extends Controller
         //return $data;
         return view('Frontend.pages.product',compact('data'));
     }
-
+    
 }

@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
 {
-    Schema::create('products', function (Blueprint $table) {
+    Schema::create('categories', function (Blueprint $table) {
         $table->bigIncrements('id');
         $table->string('name');
-        $table->string('image');
-        $table->decimal('price');
-        $table->text('description');
-        $table->unsignedBigInteger('category_id');
-        $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         $table->timestamps();
     });
 }
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('loai_sp');
     }
 };
