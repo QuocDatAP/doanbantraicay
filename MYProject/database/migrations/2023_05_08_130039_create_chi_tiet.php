@@ -13,18 +13,17 @@ return new class extends Migration
      */
     public function up()
 {
-    Schema::create('products', function (Blueprint $table) {
+    Schema::create('fruit_details', function (Blueprint $table) {
         $table->bigIncrements('id');
-        $table->string('name');
-        $table->string('image');
-        $table->decimal('price');
-        $table->text('description');
-        $table->unsignedBigInteger('category_id');
-        $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+        $table->unsignedBigInteger('fruit_id');
+        $table->string('season');
+        $table->string('origin');
+        $table->date('expiration_date');
+        $table->text('other_details')->nullable();
         $table->timestamps();
+        $table->foreign('fruit_id')->references('id')->on('fruits')->onDelete('cascade');
     });
 }
-
 
     /**
      * Reverse the migrations.
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('chi_tiet');
     }
 };
